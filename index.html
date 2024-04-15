@@ -7,7 +7,11 @@
 
 <script>
   const params = new URLSearchParams(window.location.search);
-  const game = params.get("game") + ".swf";
+  if (params.get("game").includes(".swf")) {
+    game = params.get("game")
+  } else {
+    game = `${params.get("game")}.swf`
+  };
 
   document.querySelector(".swfembedthing").src = `./files/${game}`
 </script>
